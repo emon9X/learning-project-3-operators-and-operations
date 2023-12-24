@@ -177,7 +177,9 @@ Operator	Example	       Same As
                 11111111111111111111111110011100 (-100 after adding 1 in 32-bit signed two's complement)
                 00000000000000000000000000000101 (5 in 32-bit signed two's complement)
                 -------------------------------------
-                11111111111111111111111110011001 */
+                11111111111111111111111110011001 (-103 in 32-bit signed two's complement)
+                00000000000000000000000001100110 (inverting)
+                00000000000000000000000001100111 (adding 1) (103 in 32-bit signed two's complement)*/
     x ^= 5;
     console.log('XOR neg '+x)
 }
