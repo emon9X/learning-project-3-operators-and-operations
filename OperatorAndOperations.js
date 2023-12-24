@@ -85,7 +85,7 @@ Operator	Example	       Same As
     console.log('left shift negative '+ x)
 }
 
-// right shift bitwise assignment operator 
+// signed right shift bitwise assignment operator.  In many cases, JavaScript uses a technique called "sign-propagating right shift," which preserves the sign of the number while shifting.
 
 {
     let x = 100; /** in binary x = 1100100 */
@@ -95,6 +95,89 @@ Operator	Example	       Same As
 
 {
     let x = -100; /** in binary x = -1100100 */
-    x >>= 5; /** x = x >> 5 --> x = 11 */
+    x >>= 5; /** x = x >> 5 --> x = -100 */
     console.log('right shift negative '+x);
+}
+{
+    let x = -10; /** in binary x = -1010 */
+    x >>= 5; /** x = x >> 5 --> x = -1 */
+    console.log('right shift negative '+x);
+}
+
+
+// Unsigned Right Shift Assignment Operator
+
+{
+    let x = 100;
+    x >>>= 5;
+    console.log('unsigned right shift positive '+x);
+}
+{
+    let x = -100;
+    x >>>= 5;
+    console.log('unsigned right shift negative '+x);
+}
+
+//bitwise AND assignment operator
+
+{
+    let x = 100; /** in binary x = 1100100 */
+    x &= 5; /*  1100100 
+                0000101 
+                --------
+                0000100*/
+    console.log('AND '+x);
+}
+
+{
+    let x = -100;
+    x &=5; 
+    console.log('AND neg '+x);
+}
+
+//Bitwise OR Assignment Operator
+
+{
+    let x = 100; /**
+                    1100100
+                    0000101
+                    --------
+                    1100101 */
+    x |= 5;
+    console.log('OR '+x)
+}
+
+{
+    let x= -100;
+                        /**
+                    1100100
+                    0000101
+                    --------
+                    1100011 */
+    
+    x |= 5;
+    console.log('OR neg '+ x);
+}
+
+//Bitwise XOR Assignment Operator
+
+{
+    let x = 100; /**
+                00000000000000000000000001100100 (100 in 32-bit signed two's complement)
+                00000000000000000000000000000101 (5 in 32-bit signed two's complement)
+                --------------------------------
+                00000000000000000000000001100001 */
+    x ^= 5;
+    console.log('XOR '+x)
+}
+{
+    let x = -100; /**
+                00000000000000000000000001100100 (100 in 32-bit signed two's complement)
+                11111111111111111111111110011011 (-100 after inverting)
+                11111111111111111111111110011100 (-100 after adding 1 in 32-bit signed two's complement)
+                00000000000000000000000000000101 (5 in 32-bit signed two's complement)
+                -------------------------------------
+                11111111111111111111111110011001 */
+    x ^= 5;
+    console.log('XOR neg '+x)
 }
