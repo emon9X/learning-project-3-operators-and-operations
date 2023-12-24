@@ -41,7 +41,7 @@ Operator	Example	       Same As
 %=	        x %= y	       x = x % y
 **=	        x **= y	       x = x ** y
 
-Shift Bitwise Assignment Operators
+Bitwise Shift Assignment Operators
 
 Operator	Example	       Same As
 <<=	        x <<= y	       x = x << y
@@ -149,11 +149,15 @@ Operator	Example	       Same As
 
 {
     let x= -100;
-                        /**
-                    1100100
-                    0000101
-                    --------
-                    1100011 */
+                       /**
+                00000000000000000000000001100100 (100 in 32-bit signed two's complement)
+                11111111111111111111111110011011 (-100 after inverting)
+                11111111111111111111111110011100 (-100 after adding 1 in 32-bit signed two's complement)
+                00000000000000000000000000000101 (5 in 32-bit signed two's complement)
+                -------------------------------------
+                11111111111111111111111110011101 (-99 in 32-bit signed two's complement)
+                00000000000000000000000001100010 (inverting)
+                00000000000000000000000001100011 (adding 1) (99in 32-bit signed two's complement)*/
     
     x |= 5;
     console.log('OR neg '+ x);
@@ -182,4 +186,22 @@ Operator	Example	       Same As
                 00000000000000000000000001100111 (adding 1) (103 in 32-bit signed two's complement)*/
     x ^= 5;
     console.log('XOR neg '+x)
+}
+
+//Logical AND assignment operator 
+
+{
+    let x = 100;
+    x &&= 5; /*x = x && (x = 5) 
+               1. if x is truthy then x = 5
+               2. if x is falsy then x = x. x remains unchanged*/
+    console.log('logical AND assignment '+x);
+}
+
+//Logical OR assignment operator
+
+{
+    let x = 100;
+    x ||= 5;
+    console.log('logical OR assignment '+x)
 }
