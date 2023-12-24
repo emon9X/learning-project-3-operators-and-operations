@@ -195,13 +195,62 @@ Operator	Example	       Same As
     x &&= 5; /*x = x && (x = 5) 
                1. if x is truthy then x = 5
                2. if x is falsy then x = x. x remains unchanged*/
-    console.log('logical AND assignment '+x);
+    console.log('logical AND assignment truthy '+x);
+}
+{
+    let x = 0;
+    x &&= 5; /*x = x && (x = 5) 
+               1. if x is truthy then x = 5
+               2. if x is falsy then x = x. x remains unchanged*/
+    console.log('logical AND assignment falsy '+x);
 }
 
 //Logical OR assignment operator
 
 {
     let x = 100;
-    x ||= 5;
-    console.log('logical OR assignment '+x)
+    x ||= 5; /* x = x || (x = 5)
+                1. if x is falsy then x = 5
+                2. if x is truthy then x = x. x remains unchanged */
+    console.log('logical OR assignment truthy '+x)
+}
+{
+    let x = 0;
+    x ||= 5; /* x = x || (x = 5)
+                1. if x is falsy then x = 5
+                2. if x is truthy then x = x. x remains unchanged */
+    console.log('logical OR assignment falsy '+x)
+}
+
+//Nullish coalescing assignment operator
+
+// like logical OR assignment but specifically for null and undefined value 
+
+{
+    let x = 0;
+    x ??=5 /* x = x ?? (x = 5)
+              1. if x contains value other than null and undefined then x = x. remains unchanged 
+              2. if x contains null or undefined then x = 5*/
+    console.log('nullish coalescent unsatisfied '+x);
+}
+{
+    let x = 'undefined';
+    x ??=5 /* x = x ?? (x = 5)
+              1. if x contains value other than null and undefined then x = x. remains unchanged 
+              2. if x contains null or undefined then x = 5*/
+    console.log('nullish coalescent unsatisfied '+x);
+}
+{
+    let x = null;
+    x ??=5 /* x = x ?? (x = 5)
+              1. if x contains value other than null and undefined then x = x. remains unchanged 
+              2. if x contains null or undefined then x = 5*/
+    console.log('nullish coalescent satisfied '+x);
+}
+{
+    let x = undefined;
+    x ??=5 /* x = x ?? (x = 5)
+              1. if x contains value other than null and undefined then x = x. remains unchanged 
+              2. if x contains null or undefined then x = 5*/
+    console.log('nullish coalescent satisfied '+x);
 }
