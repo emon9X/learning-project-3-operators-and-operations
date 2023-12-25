@@ -254,3 +254,13 @@ Operator	Example	       Same As
               2. if x contains null or undefined then x = 5*/
     console.log('nullish coalescent satisfied '+x);
 }
+//-----------------------------------------------------------------------------------------------------------
+
+// typeOf operator
+
+console.log(typeof "")
+console.log(typeof (3+3))
+console.log(typeof [1, 2]) /*array is one kind of object */
+let car 
+console.log(typeof(car));
+console.log(typeof({name: 'value'}))
